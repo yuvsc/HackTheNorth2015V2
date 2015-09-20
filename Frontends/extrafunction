@@ -1,0 +1,18 @@
+function readingProduceData(){
+        var fin = [];
+        foodsRef.on('child_added', function(snapshot) {       
+            message = snapshot.val();       
+            temp = []   
+            temp = temp.concat(message['Seafood']);
+            temp = temp.concat(message['Deli']);
+            temp = temp.concat(message['Dairy']);
+            temp = temp.concat(message['Meat']);
+            temp = temp.concat(message['Produce']);
+            temp = temp.concat(message['Frozen']);
+            temp = temp.concat(message['Bulk']);
+            temp = temp.concat(message['Bakery']);
+            temp = temp.concat(message['Snacks']);
+            fin = fin.concat([temp]); 
+            globalProduce = fin;
+        });
+    }

@@ -1,0 +1,56 @@
+.nav nav-pills a{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 64px;
+    font-weight: 700;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.container p{
+    text-align: center;
+}
+
+.bitofspace{
+    height: 30px;
+}
+
+.footer .container{
+    height: 100px;
+    
+}
+
+.custom .active a,
+.custom .active a:hover {
+    background-color: black;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover {
+    background-color: black;
+}
+
+.submitbutton{
+    background-color: black;
+    color: white;
+    height: 60px;
+    width: 120px;
+    font-size: 24px;
+    border-radius: 8px;
+}
+
+
+.text-muted{
+    vertical-align: bottom;
+    text-align: center;
+}
+
+form { 
+margin: 0 auto; 
+width:250px;
+text-align: left;
+}
+

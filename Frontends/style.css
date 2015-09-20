@@ -1,0 +1,36 @@
+.nav nav-pills a{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 64px;
+    font-weight: 700;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.container p{
+    text-align: center;
+}
+
+.footer .container{
+    height: 100px;
+    
+}
+
+
+.custom .active a,
+.custom .active a:hover {
+    background-color: black;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover {
+    background-color: black;
+}
+
+.text-muted{
+    vertical-align: bottom;
+    text-align: center;
+}

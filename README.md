@@ -1,2 +1,2 @@
-# HackTheNorth2015V2
-ugh
+# HackTheNorth2015
+MLH competition at Waterloo University

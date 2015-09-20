@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<script type="text/javascript" src="bower_components/pathfinding/pathfinding-browser.min.js"></script>-->
+    <script type="text/javascript" src="../../testpathfinding/bower_components/pathfinding/pathfinding-browser.min.js"></script>
+
+    <title>Logo Nav - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/logo-nav.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="http://placehold.it/150x50&text=Logo" alt="">
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Temp QuikList Landing page</h1>
+                <p>Note: You may need to adjust some CSS based on the size of your logo. The default logo size is 150x50 pixels.</p>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+    
+    var ref = new Firebase("https://quiklist.firebaseio.com/");
+    var wallRef = new Firebase("https://quiklist.firebaseio.com/wall");
+    var deliRef = new Firebase("https://quiklist.firebaseio.com/Deli");
+    var bakeRef = new Firebase("https://quiklist.firebaseio.com/Bake");
+    var dairyRef = new Firebase("https://quiklist.firebaseio.com/Dairy");
+    var meatRef = new Firebase("https://quiklist.firebaseio.com/Meat");
+    var seafoodRef = new Firebase("https://quiklist.firebaseio.com/Seafood");
+    var bulkRef = new Firebase("https://quiklist.firebaseio.com/Bulk");
+    var produceRef = new Firebase("https://quiklist.firebaseio.com/Produce");
+    var frozenRef = new Firebase("https://quiklist.firebaseio.com/Frozen");
+    var snacksRef = new Firebase("https://quiklist.firebaseio.com/Snacks");
+                            
+    /*ref.set({"User": "name", "Hello": "World"});
+    /*var ref = new Firebase("https://z4oo38jwdil.firebaseio-demo.com/");*/
+    </script>
+
+    <center><h1> Grid </h1></center>
+
+    <center><canvas id="myCanvas" width="300" height="300" style="border:1px solid;">
+    </canvas>
+    </center>
+
+    
+    <script type="text/javascript">
+    
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");    
+    var globalArray = [] 
+    var globalDeli = []
+    var globalBake = []
+    var globalDairy = []
+    var globalMeat = []
+    var globalSeafood = []
+    var globalBulk = []
+    var globalProduce = []
+    var globalFlorist = []
+    var globalGrocery = []
+    var globalFrozen = []
+    var globalSnacks = []
+    function drawGrid(){
+        for(i = 0; i< 300; i+=10){
+            for(j = 0; j< 300; j+=10){
+                ctx.rect(i,j,10,10);           
+                ctx.stroke();
+            }
+        }
+    }
+    function drawWall(){
+        /*Retrieve information from api*/
+        var arrOfWall = globalArray;
+        for(i = 0; i< arrOfWall.length; i++){
+            ctx.fillStyle = "#000000";
+            ctx.fillRect(arrOfWall[i][0],arrOfWall[i][1],10,10); 
+        }
+    }
+    function drawDeli(){
+        var arrOfWall = globalDeli;
+        for(i = 0; i< arrOfWall.length; i++){
+            ctx.fillStyle = "#FF00FF";
+            ctx.fillRect(arrOfWall[i][0],arrOfWall[i][1],10,10); 
+        }
+    }
+    function drawBake(){
+        var arrOfWall = globalBake;
+        for(i = 0; i< arrOfWall.length; i++){
+            ctx.fillStyle = "#FFA500";
+            ctx.fillRect(arrOfWall[i][0],arrOfWall[i][1],10,10); 
+        }
+    }
+    function drawDairy(){
+        var arrOfWall = globalDairy;
+        for(i = 0; i< arrOfWall.length; i++){
+            ctx.fillStyle = "#FFFF00";
+            ctx.fillRect(arrOfWall[i][0],arrOfWall[i][1],10,10); 
+        }
+    }
+    function drawMeat(){
+        var arrOfWall = globalMeat;
+        for(i = 0; i< arrOfWall.length; i++){
+            ctx.fillStyle = "#FF0000";
+            ctx.fillRect(arrOfWall[i][0],arrOfWall[i][1],10,10); 
+        }
+    }
+    function drawSeafood(){
+        var arrOfWall = globalSeafood;
+        for(i = 0; i< arrOfWall.length; i++){
+            ctx.fillStyle = "#0000FF";
+            ctx.fillRect(arrOfWall[i][0],arrOfWall[i][1],10,10); 
+        }
+    }
+    function drawBulk(){
+        var arrOfWall = globalBulk;
+        for(i = 0; i< arrOfWall.length; i++){
+            ctx.fillStyle = "#D3D3D3";
+            ctx.fillRect(arrOfWall[i][0],arrOfWall[i][1],10,10); 
+        }
+    }
+    function drawProduce(){
+        var arrOfWall = globalProduce;
+        for(i = 0; i< arrOfWall.length; i++){
+            ctx.fillStyle = "#00FF00";
+            ctx.fillRect(arrOfWall[i][0],arrOfWall[i][1],10,10); 
+        }
+    }
+    function drawFrozen(){
+        var arrOfWall = globalFrozen;
+        for(i = 0; i< arrOfWall.length; i++){
+            ctx.fillStyle = "#00FFFF";
+            ctx.fillRect(arrOfWall[i][0],arrOfWall[i][1],10,10); 
+        }
+    }
+    function drawSnacks(){
+        var arrOfWall = globalSnacks;
+        for(i = 0; i< arrOfWall.length; i++){
+            ctx.fillStyle = "#663300";
+            ctx.fillRect(arrOfWall[i][0],arrOfWall[i][1],10,10); 
+        }
+    }
+    function readingData(){
+        var fin = [];
+        wallRef.on('child_added', function(snapshot) {
+            message = snapshot.val();       
+            temp = []   
+            temp = temp.concat(message['x']);
+            temp = temp.concat(message['y']);
+            fin = fin.concat([temp]);  
+            globalArray = fin;
+        });
+    }
+    
+    function readingDeliData(){
+        var fin = [];
+        deliRef.on('child_added', function(snapshot) {       
+            message = snapshot.val();       
+            temp = []   
+            temp = temp.concat(message['x']);
+            temp = temp.concat(message['y']);
+            fin = fin.concat([temp]); 
+            globalDeli = fin;
+        });
+    }
+    function readingBakeData(){
+        var fin = [];
+        bakeRef.on('child_added', function(snapshot) {       
+            message = snapshot.val();       
+            temp = []   
+            temp = temp.concat(message['x']);
+            temp = temp.concat(message['y']);
+            fin = fin.concat([temp]); 
+            globalBake = fin;
+        });
+    }
+    function readingDairyData(){
+        var fin = [];
+        dairyRef.on('child_added', function(snapshot) {       
+            message = snapshot.val();       
+            temp = []   
+            temp = temp.concat(message['x']);
+            temp = temp.concat(message['y']);
+            fin = fin.concat([temp]); 
+            globalDairy = fin;
+        });
+    }
+    function readingMeatData(){
+        var fin = [];
+        meatRef.on('child_added', function(snapshot) {       
+            message = snapshot.val();       
+            temp = []   
+            temp = temp.concat(message['x']);
+            temp = temp.concat(message['y']);
+            fin = fin.concat([temp]); 
+            globalMeat = fin;
+        });
+    }
+    function readingSeafoodData(){
+        var fin = [];
+        seafoodRef.on('child_added', function(snapshot) {       
+            message = snapshot.val();       
+            temp = []   
+            temp = temp.concat(message['x']);
+            temp = temp.concat(message['y']);
+            fin = fin.concat([temp]); 
+            globalSeafood = fin;
+        });
+    }
+    function readingBulkData(){
+        var fin = [];
+        bulkRef.on('child_added', function(snapshot) {       
+            message = snapshot.val();       
+            temp = []   
+            temp = temp.concat(message['x']);
+            temp = temp.concat(message['y']);
+            fin = fin.concat([temp]); 
+            globalBulk = fin;
+        });
+    }
+    function readingProduceData(){
+        var fin = [];
+        produceRef.on('child_added', function(snapshot) {       
+            message = snapshot.val();       
+            temp = []   
+            temp = temp.concat(message['x']);
+            temp = temp.concat(message['y']);
+            fin = fin.concat([temp]); 
+            globalProduce = fin;
+        });
+    }
+    function readingFrozenData(){
+        var fin = [];
+        frozenRef.on('child_added', function(snapshot) {       
+            message = snapshot.val();       
+            temp = []   
+            temp = temp.concat(message['x']);
+            temp = temp.concat(message['y']);
+            fin = fin.concat([temp]); 
+            globalFrozen = fin;
+        });
+    }
+    function readingSnacksData(){
+        var fin = [];
+        snacksRef.on('child_added', function(snapshot) {       
+            message = snapshot.val();       
+            temp = []   
+            temp = temp.concat(message['x']);
+            temp = temp.concat(message['y']);
+            fin = fin.concat([temp]); 
+            globalSnacks = fin;
+        });
+    }
+    readingDeliData();
+    readingBakeData();
+    readingDairyData();
+    readingMeatData();
+    readingSeafoodData();
+    readingBulkData();
+    readingProduceData();
+    readingFrozenData();
+    readingSnacksData();
+    
+    readingData(); 
+    drawGrid();
+    setTimeout(function(){drawDeli();}, 2000);
+    setTimeout(function(){drawBake();}, 2000);
+    setTimeout(function(){drawDairy();}, 2000);   
+    setTimeout(function(){drawMeat();}, 2000);   
+    setTimeout(function(){drawSeafood();}, 2000);
+    setTimeout(function(){drawBulk();}, 2000);
+    setTimeout(function(){drawProduce();}, 2000);
+    
+    setTimeout(function(){drawWall();}, 2000);
+    setTimeout(function(){drawDeli();}, 2000);
+    setTimeout(function(){drawBake();}, 2000);
+    setTimeout(function(){drawDairy();}, 2000);   
+    setTimeout(function(){drawMeat();}, 2000);   
+    setTimeout(function(){drawSeafood();}, 2000);
+    setTimeout(function(){drawBulk();}, 2000);
+    setTimeout(function(){drawProduce();}, 2000);
+    setTimeout(function(){drawFrozen();}, 2000);
+    setTimeout(function(){drawSnacks();}, 2000);
+    setTimeout(function(){drawWall();}, 2000);
+    
+      
+    var matrix = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ];
+ 
+    //var PF = require('pathfinding');
+    var grid = new PF.Grid(matrix);
+    // console.log("{0}", grid);
+    var finder = new PF.AStarFinder({
+        allowDiagonal : true
+    });
+    //var finder = new PF.AStarFinder();
+    var path = finder.findPath(0, 29, 14, 6, grid);
+    console.log("{0}", path);
+    function drawFinal(){
+        var arrOfWall = path;
+            console.log("arrOfWall", arrOfWall);
+        for(i = 0; i< arrOfWall.length; i++){
+            console.log("arrOfWall", arrOfWall);
+            ctx.fillStyle = "#66FF66";
+            ctx.fillRect(arrOfWall[i][0]*10,arrOfWall[i][1]*10,10,10); 
+        }
+    }
+    setTimeout(function(){drawFinal();}, 4000);
+   </script>
+
+</body>
+</html>
