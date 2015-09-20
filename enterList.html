@@ -1,0 +1,52 @@
+<html>
+    <head>
+	<link rel="stylesheet" href="./css/style.css" />
+	<link rel="stylesheet" href="./css/bootstrap.min.css" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="js/addInput.js" language="Javascript" type="text/javascript"></script> <!-- adding another item to the list -->
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="list.js"></script>
+	</head>
+
+    <body>
+	<nav class="navbar navbar-default">	
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">QuickList</a>
+    </div>
+  </div>
+</nav>
+	<div class="container">
+	    <header>
+		<h1 id="title" style="text-align: center">QuickList</h1>
+	    </header>
+	<form role="form" method="post" action="">
+		<div id="form-group">
+			<label for="item" >Item 1:</label>
+			<input type="text" class="form-control" id="item" name="myInputs[]">
+		</div>
+		  <input type="button" style="float: right" class="btn btn-default" value="+" onClick="addInput('form-group');">
+		  <!-- <br/><br/> -->
+		  <button class="btn btn-default" style="float: right" id="get" >Submit</button>
+		<script>
+		$('#get').click(function(e){
+			e.preventDefault();
+			var a='';
+			$('input[type=text]').each(function(){
+				a+=this.value +", ";
+			});
+			console.log(a);
+			var array = a.split(',');
+			// var sectionLists = {}
+			console.log("{0}", ImSoDone(array, ""));
+			ImSoDone(array, "");
+		});
+		</script>
+		  
+	</form>	
+    </body>
+</html>
